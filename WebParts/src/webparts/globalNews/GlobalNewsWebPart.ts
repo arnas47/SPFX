@@ -13,7 +13,7 @@ import { IGlobalNewsProps } from './components/IGlobalNewsProps';
 import { IGlobalNewsWebPartProps } from './IGlobalNewsWebPartProps';
 import { GlobalNewsMain } from './service/GlobalNewsMain';
 import { Data, AllData } from './service/IGlobalNewsData';
-import { GlobalNewsCookies } from './service/GlobalNewsCookies';
+import { GlobalNewsCache } from './service/GlobalNewsCache';
 
 export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNewsWebPartProps> { 
   public render(): void {
@@ -33,15 +33,13 @@ export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNews
       blogs: data
     }; 
 
-    console.log(GlobalNewsCookies.getCookie("LatestNews"));
-
     const element: React.ReactElement<IGlobalNewsProps> = React.createElement(
         GlobalNews,
         {
             title: this.properties.title,
             description: this.properties.description,
             allData: allData,
-            latestNews: GlobalNewsCookies.getCookie("LatestNews"),
+            latestNews: GlobalNewsCache.getStorageItem("LatestNews"),
             service: service,
             siteUrl: this.context.pageContext.web.absoluteUrl
         }

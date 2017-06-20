@@ -5,7 +5,7 @@ import { IGlobalNewsState } from './IGlobalNewsState';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { GlobalNewsService } from '../service/GlobalNewsService';
 import { Data } from '../service/IGlobalNewsData';
-import { GlobalNewsCookies } from '../service/GlobalNewsCookies';
+import { GlobalNewsCache } from '../service/GlobalNewsCache';
 
 export default class GlobalNews extends React.Component<IGlobalNewsProps, IGlobalNewsState> {
   constructor(props: IGlobalNewsProps, state: IGlobalNewsState) {
