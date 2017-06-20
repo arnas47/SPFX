@@ -25,7 +25,7 @@ export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNews
     };
 
     let allData: AllData = { 
-      latestNews: data,
+      latestNews: GlobalNewsCache.getStorageItem("LatestNews"),
       news: data,
       spn: data,
       openPositions: data,
@@ -39,7 +39,7 @@ export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNews
             title: this.properties.title,
             description: this.properties.description,
             allData: allData,
-            latestNews: GlobalNewsCache.getStorageItem("LatestNews"),
+            latestNews: null,
             service: service,
             siteUrl: this.context.pageContext.web.absoluteUrl
         }

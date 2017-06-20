@@ -4,10 +4,16 @@
       "entry": "./lib/webparts/hello/HelloWebPart.js",
       "manifest": "./src/webparts/hello/HelloWebPart.manifest.json",
       "outputPath": "./dist/hello.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/globalNews/GlobalNewsWebPart.js",
+      "manifest": "./src/webparts/globalNews/GlobalNewsWebPart.manifest.json",
+      "outputPath": "./dist/global-news.bundle.js"
     }
   ],
   "externals": {},
   "localizedResources": {
-    "helloStrings": "webparts/hello/loc/{locale}.js"
+    "helloStrings": "webparts/hello/loc/{locale}.js",
+    "globalNewsStrings": "webparts/globalNews/loc/{locale}.js"
   }
 }

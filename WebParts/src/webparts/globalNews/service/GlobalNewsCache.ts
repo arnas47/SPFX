@@ -17,12 +17,7 @@ export class GlobalNewsCache{
 
     public static setStorageItem(name: string, value: string){
         if (typeof(Storage) !== "undefined") {
-            var storage = window.localStorage;
-            storage.setItem(name, value);
+            localStorage.setItem(name, value);
         }
-    }
-
-    public static deleteCookie(name: string){
-
     }
 }

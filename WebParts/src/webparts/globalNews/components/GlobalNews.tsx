@@ -26,15 +26,13 @@ export default class GlobalNews extends React.Component<IGlobalNewsProps, IGloba
   }
 
   private loadData(index: number, type: string): void{
+  /*  if(type == "latestNews"){   
+            GlobalNewsService.checkCache(props.allData[type]);
+    }*/
+
     this.props.service.loadData(index, this.props.siteUrl).then((response: Data) => {
       this.setState((previousState: IGlobalNewsState, props: IGlobalNewsProps) => {
         props.allData[type] = response;
-
-        if(type == "latestNews"){
-            var json = JSON.stringify(props.allData[type]);
-            GlobalNewsCookies.setCookie("LatestNews", json);
-        }
-      
         return previousState;
       });
     });  
@@ -50,12 +48,12 @@ export default class GlobalNews extends React.Component<IGlobalNewsProps, IGloba
   }
 
   public componentDidMount(): void {
-    this.loadData(0, "latestNews");
+   /* this.loadData(0, "latestNews");
     this.loadData(1, "news");
     this.loadData(2, "spn");
     this.loadData(3, "openPositions");
     this.loadData(4, "appointments");
-    this.loadData(5, "blogs");
+    this.loadData(5, "blogs");*/
   }
 
   private contentPart(index: number, data: Data, type: string){

@@ -202,7 +202,7 @@ export class GlobalNewsService{
 
 
     // Get article pages from Site Pages library
-    public getSitePages(webRelativeUrl: string, filterValue: string): Promise<Item[]> {
+    private getSitePages(webRelativeUrl: string, filterValue: string): Promise<Item[]> {
         var request: IGlobalNewsQuery;
 
         request = {
@@ -227,7 +227,7 @@ export class GlobalNewsService{
     }
 
     // Get open position XML file from Open Position library 
-    public getOpenPositions(webRelativeUrl: string, dateFilterValue: string = "", idsFilterValue: string[] = []): Promise<Item[]>{  
+    private getOpenPositions(webRelativeUrl: string, dateFilterValue: string = "", idsFilterValue: string[] = []): Promise<Item[]>{  
         var request: IGlobalNewsQuery;
 
         request = {
@@ -251,7 +251,7 @@ export class GlobalNewsService{
     }
 
     // Sort items by article date
-    public sortByDate(a, b): number {
+    private sortByDate(a, b): number {
         if (a.kemiraDateTimeRefinable > b.kemiraDateTimeRefinable) {
             return -1;
         }
@@ -266,12 +266,12 @@ export class GlobalNewsService{
     // Check if any more items can be loaded. 
     // true: show Read more link
     // false: hide Read more link
-    public chechIfMoreRecordsExist(items: Item[]): boolean{
+    private chechIfMoreRecordsExist(items: Item[]): boolean{
         return items.length < (this.rowLimit + 1) ? true : false;
     }
 
     // Exclude items that are already loaded in web part
-    public itemsToExclude(lastDate: string, items: Item[], contentTypeIds: string[]): Item[]{
+    private itemsToExclude(lastDate: string, items: Item[], contentTypeIds: string[]): Item[]{
         var excludedItems: Item[] = [];
 
         for(var i = 0; i < items.length; i++){
@@ -405,5 +405,9 @@ export class GlobalNewsService{
         }
 
         return contentType;
+    }
+
+    public static checkCache(){
+
     }
 }
