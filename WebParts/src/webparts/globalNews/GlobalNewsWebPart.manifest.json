@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../node_modules/@microsoft/sp-module-interfaces/lib/manifestSchemas/jsonSchemas/clientSideComponentManifestSchema.json",
+
+  "id": "79a40185-96d8-4452-9994-5f93d0d3a256",
+  "alias": "GlobalNewsWebPart",
+  "componentType": "WebPart",
+  "version": "0.0.1",
+  "manifestVersion": 2,
+
+  "preconfiguredEntries": [{
+    "groupId": "79a40185-96d8-4452-9994-5f93d0d3a256",
+    "group": { "default": "Under Development" },
+    "title": { "default": "GlobalNews" },
+    "description": { "default": "GlobalNews description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "title": "Global news",
+      "description": "Global News Description"
+    }
+  }]
+}
