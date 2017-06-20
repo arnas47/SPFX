@@ -5,6 +5,7 @@ import { IGlobalNewsState } from './IGlobalNewsState';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { GlobalNewsService } from '../service/GlobalNewsService';
 import { Data } from '../service/IGlobalNewsData';
+import { GlobalNewsCookies } from '../service/GlobalNewsCookies';
 
 export default class GlobalNews extends React.Component<IGlobalNewsProps, IGlobalNewsState> {
   constructor(props: IGlobalNewsProps, state: IGlobalNewsState) {
@@ -24,17 +25,23 @@ export default class GlobalNews extends React.Component<IGlobalNewsProps, IGloba
     });
   }
 
-  private loadMoreData(index: number, type: string, event): void{
-    this.props.service.loadMoreData(index, this.props.allData, this.props.siteUrl).then(response => {
+  private loadData(index: number, type: string): void{
+    this.props.service.loadData(index, this.props.siteUrl).then((response: Data) => {
       this.setState((previousState: IGlobalNewsState, props: IGlobalNewsProps) => {
         props.allData[type] = response;
+
+        if(type == "latestNews"){
+            var json = JSON.stringify(props.allData[type]);
+            GlobalNewsCookies.setCookie("LatestNews", json);
+        }
+      
         return previousState;
       });
     });  
   }
 
-  private loadData(index: number, type: string): void{
-    this.props.service.loadData(index, this.props.siteUrl).then((response: Data) => {
+  private loadMoreData(index: number, type: string, event): void{
+    this.props.service.loadMoreData(index, this.props.allData, this.props.siteUrl).then(response => {
       this.setState((previousState: IGlobalNewsState, props: IGlobalNewsProps) => {
         props.allData[type] = response;
         return previousState;

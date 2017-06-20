@@ -13,16 +13,10 @@ import { IGlobalNewsProps } from './components/IGlobalNewsProps';
 import { IGlobalNewsWebPartProps } from './IGlobalNewsWebPartProps';
 import { GlobalNewsMain } from './service/GlobalNewsMain';
 import { Data, AllData } from './service/IGlobalNewsData';
-import { GlobalNewsCookies } from './GlobalNewsCookies';
+import { GlobalNewsCookies } from './service/GlobalNewsCookies';
 
 export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNewsWebPartProps> { 
   public render(): void {
-    document.cookie = "AllData=John Doe";  
-
-    document.cookie.split(';').forEach(function (c) {
-        console.log(c);
-    });
-
     var service: GlobalNewsMain = new GlobalNewsMain(5);
     let data: Data = {
       items: [],
@@ -37,7 +31,9 @@ export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNews
       openPositions: data,
       appointments: data,
       blogs: data
-    };
+    }; 
+
+    console.log(GlobalNewsCookies.getCookie("LatestNews"));
 
     const element: React.ReactElement<IGlobalNewsProps> = React.createElement(
         GlobalNews,
@@ -45,6 +41,7 @@ export default class GlobalNewsWebPart extends BaseClientSideWebPart<IGlobalNews
             title: this.properties.title,
             description: this.properties.description,
             allData: allData,
+            latestNews: GlobalNewsCookies.getCookie("LatestNews"),
             service: service,
             siteUrl: this.context.pageContext.web.absoluteUrl
         }
