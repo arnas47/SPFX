@@ -1,0 +1,10 @@
+{
+  "solution": {
+    "name": "web-parts-client-side-solution",
+    "id": "b553a1c0-d567-48f8-907a-75c20494758c",
+    "version": "1.0.0.0"
+  },
+  "paths": {
+    "zippedPackage": "solution/web-parts.sppkg"
+  }
+}

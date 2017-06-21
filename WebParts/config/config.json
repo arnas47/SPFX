@@ -1,0 +1,19 @@
+{
+  "entries": [
+    {
+      "entry": "./lib/webparts/globalNews/GlobalNewsWebPart.js",
+      "manifest": "./src/webparts/globalNews/GlobalNewsWebPart.manifest.json",
+      "outputPath": "./dist/global-news.bundle.js"
+    },
+    {
+      "entry": "./lib/webparts/localNews/LocalNewsWebPart.js",
+      "manifest": "./src/webparts/localNews/LocalNewsWebPart.manifest.json",
+      "outputPath": "./dist/local-news.bundle.js"
+    }
+  ],
+  "externals": {},
+  "localizedResources": {
+    "globalNewsStrings": "webparts/globalNews/loc/{locale}.js",
+    "localNewsStrings": "webparts/localNews/loc/{locale}.js"
+  }
+}
